@@ -1,0 +1,7 @@
+{
+   "manifest_version": 2,
+   "name": "Automatic Zoom Poll",
+   "version": "0.1",
+   "default_locale": "en",
+   "description": "A chrome extension that allows professors to sends out automatic zoom poll asking they should go slower in faster in a lecture."
+}
