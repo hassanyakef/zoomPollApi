@@ -1,7 +1,34 @@
 {
-   "manifest_version": 2,
    "name": "Automatic Zoom Poll",
-   "version": "0.1",
-   "default_locale": "en",
-   "description": "# Chrome extension that allows professors to send out automatic zoom poll asking they should go slower/faster in a lecture."
+   "version": "1.0",
+   "manifest_version": 2,
+   // "default_locale": "en",
+   "description": "# Chrome extension that allows professors to send out automatic zoom poll asking they should go slower/faster in a lecture.",
+   "content_scripts": [
+      {
+        "matches": ["<all_urls>"],
+        "js": ["content.js"]
+      }
+    ],
+    "browser_action": {
+      "default_popup": "login.html",
+      "default_title": "Auto Zoom API Poll"
+      // "default_icon": {
+      //    "16": "images/get_started16.png",
+      //    "32": "images/get_started32.png",
+      //    "48": "images/get_started48.png",
+      //    "128": "images/get_started128.png"
+      //  }
+    },
+   //  "icons": {
+   //    "16": "images/get_started16.png",
+   //    "32": "images/get_started32.png",
+   //    "48": "images/get_started48.png",
+   //    "128": "images/get_started128.png"
+   //  },
+    "background": {
+      "scripts": ["background.js"],
+      "persistent": false
+    },
+   "permissions": ["declarativeContent", "storage"]
 }
