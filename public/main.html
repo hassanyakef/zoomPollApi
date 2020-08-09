@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <title>Automatic Zoom Poll</title>
+</head>
+
+<body>
+<form id="pollForm">
+   <h5>Please enter your zoom meeting id:</h5>
+   <label>
+      <input id="meetingId" type="text">
+   </label>
+   <button type="submit">Submit</button>
+
+</form>
+</body>
+<script>
+  const query = window.location.search.substring(1);
+  const zoomAuthToken = query.split('access_token=')[1];
+
+  // TODO: move this to backend endpoint "createPoll"
+  const createPoll = async (e, token) => {
+    e.preventDefault();
+
+    const meetingId = document.getElementById('meetingId').value;
+    console.log({meetingId});
+
+
+    const newPoll = {
+      title: 'Zoom Lecture Poll',
+      questions: [
+        {
+          name: 'Should the professor go faster or slower?',
+          type: 'single',
+          answers: ['faster', 'slower', 'current pace is fine']
+        }
+      ]
+    };
+
+    const url = `https://api.zoom.us/v2/meetings/${meetingId}/polls`;
+    const params = {
+      headers: {
+        'content-type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      },
+      body: JSON.stringify(newPoll),
+      method: 'POST'
+    };
+
+    try {
+      const res = await fetch(url, params);
+      const data = await res.json();
+
+      console.log({ data });
+
+    } catch (err) {
+      console.log({ err });
+    }
+
+  };
+
+  const pollForm = document.getElementById('pollForm');
+
+  pollForm.addEventListener('submit', (e) => createPoll(e, zoomAuthToken));
+</script>
+
+</html>

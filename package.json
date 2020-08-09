@@ -1,0 +1,25 @@
+{
+  "name": "zoompollapi",
+  "version": "1.0.0",
+  "description": "A chrome extension that allows professors to send out automatic zoom poll asking they should go slower/faster in a lecture.",
+  "main": "server",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hassanyakef/zoomPollApi.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hassanyakef/zoomPollApi/issues"
+  },
+  "homepage": "https://github.com/hassanyakef/zoomPollApi#readme",
+  "dependencies": {
+    "@types/express": "^4.17.7",
+    "axios": "^0.19.2",
+    "express": "^4.17.1",
+    "node-fetch": "^2.6.0"
+  }
+}
